@@ -3,29 +3,34 @@
 // 645 -> 5   78 -> третьей цифры нет
 
 Console.WriteLine("Введите трехзначное или большее число: ");
-int number = int.Parse(Console.ReadLine()!);
+int number;
 
-if (number < 100)
+while (!int.TryParse(Console.ReadLine()!, out number))
 {
-    Console.WriteLine("Третьей цифры нет");
+    Console.WriteLine("Некорректный ввод");
+    Console.WriteLine("Введите трехзначное или большее число: ");
 }
 
-else
+void PrintThirdDigit(int number)
 {
-    FindThirdDigit(number);
-}
-
-void FindThirdDigit(int number)
-{
-    while (number > 999)
+    if (number > 99)
     {
-        number = number / 10;
+        while (number > 999)
+        {
+            number = number / 10;
+        }
+
+        int result(int number)
+        {
+            int thirdDigit = number % 10; // у трехзначного числа
+            return thirdDigit;
+        }
+        Console.WriteLine("Третья цифра введенного числа: " + result(number));
     }
 
-    int result(int number)
+    else
     {
-        int thirdDigit = number % 10; 
-        return thirdDigit;
+        Console.WriteLine("Третьей цифры нет");
     }
-    Console.WriteLine("Третья цифра введенного числа: " + result(number));
 }
+PrintThirdDigit(number);
